@@ -1,0 +1,124 @@
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		TickDoor
+	</title>
+</head>
+<template name="layout">
+	{{> FreeLayout}}
+</template>
+
+<template name="FreeLayout">
+	<div id="content" class="sticky-wrapper">
+		<div id="custom-nav" class="navbar navbar-fixed-top navbar-default" role="navigation">
+			<div class="navbar-container container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">
+							Toggle navigation
+						</span>
+						<span class="icon-bar">
+						</span>
+						<span class="icon-bar">
+						</span>
+						<span class="icon-bar">
+						</span>
+					</button>
+					<a class="navbar-brand" href="/">
+						<img src="images/tickdoor-logo.png"  alt="water can supply" />
+					</a>
+				</div>
+				<div id="menu" class="collapse navbar-collapse">
+				{{#if currentUser}}
+					{{> FreeLayoutAuthMainMenu}}
+				{{else}}
+					{{>FreeLayoutMainMenu}}
+				{{/if}}
+				</div>
+			</div>
+		</div>
+		{{> yield}}
+	</div>
+	<div id="footer" class="sticky-footer">
+		<div class="footer-container container">
+			<p class="text-muted footerText">
+				Copyright &copy; www.tickdoor.com 2016
+			</p>
+		</div>
+	</div>
+</template>
+
+<template name="FreeLayoutAuthMainMenu">
+	<ul id="menu-items" class="nav navbar-nav pull-right">
+		<li id="menu-item-simple" class="">
+			<a href="#ordernow">
+				<span class="item-title">
+					Order Now
+				</span>
+			</a>
+		</li>
+		<li id="menu-item-simple" class="">
+			<a href="#yourorders">
+				<span class="item-title">
+					Your Orders
+				</span>
+			</a>
+		</li>
+		<li id="menu-item-simple" class="">
+			<a href="#features">
+				<span class="item-title">
+					Features
+				</span>
+			</a>
+		</li>
+		<li id="menu-item-simple" class="">
+			<a href="#aboutus">
+				<span class="item-title">
+					About Us
+				</span>
+			</a>
+		</li>
+		<li id="menu-item-simple" class="">
+			<a href="/sign-out">
+				<span class="item-title">
+					Sign Out
+				</span>
+			</a>
+		</li>
+	</ul>
+</template>
+
+<template name="FreeLayoutMainMenu">
+	<ul id="menu-items" class="nav navbar-nav pull-right">
+		<li id="menu-item-simple" class="">
+			<a href="/sign-in">
+				<span class="item-title">
+					Order Now
+				</span>
+			</a>
+		</li>
+		<li id="menu-item-simple" class="">
+			<a href="/#features">
+				<span class="item-title">
+					Features
+				</span>
+			</a>
+		</li>
+		<li id="menu-item-simple" class="">
+			<a href="/#aboutus">
+				<span class="item-title">
+					About Us
+				</span>
+			</a>
+		</li>
+		<li id="menu-item-simple" class="">
+			<a href="/sign-in">
+				<span class="item-title">
+					Sign In
+				</span>
+			</a>
+		</li>
+	</ul>
+</template>
+

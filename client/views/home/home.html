@@ -1,0 +1,441 @@
+<template name="Home">
+	{{> HomeJumbotron}}
+	{{> HomeFeatures}}
+	{{#if currentUser}}
+		{{> HomeOrdernow}}
+		{{> HomeYourorders}}
+	{{/if}}
+	{{> HomeAboutus}}
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="HomeJumbotron">
+	<section id="section-welcome" class="bg-blue">
+		<div class="jumbotron " style="background-image: url('/images/jumbotron-bg.jpg'); min-height: 550px;">
+			<div id="content" class="container">
+				<p id="jumbotron-text">
+				</p>
+				{{> HomeJumbotronJumbotronContent}}
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="HomeJumbotronJumbotronContent">
+
+	<div class="overview col-md-8 col-sm-12 col-xs-12" style="padding-top: 100px">
+        <h2 class="title1">Get 20 litres water cans delivered at your doorstep just by a click of a button !!</h2>
+        <h3 class="title2">We deliver 20 litres water bottles to your doorstep whenever you need it.Period.</h3>
+        {{# if currentUser}}
+        	<a href="#ordernow" class="btn btn-lg btn-warning">Order Now</a>
+        {{else}}
+        	<a href="/sign-in" class="btn btn-lg btn-warning">Order Now</a>
+        {{/if}}
+    </div>
+
+    <div class="phone android col-md-4 col-sm-12 col-xs-12">
+        <div class="android-holder phone-holder">
+        <img src="images/only_bottle.png"  alt="water can supply" />
+        </div>
+    </div>
+
+</template>
+
+<template name="HomeFeatures">
+	<section class="bg-blue" id="features">
+	<div style="background-image: url('/images/featuresBgSmall.jpg'); min-height: 500px; padding-top:50px">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12" id="content">
+					{{> HomeFeaturesContent2}}
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+</template>
+
+<template name="HomeFeaturesContent2">
+    <div class="row">
+        <div class="item col-md-4 col-sm-6 col-xs-12 text-center">
+            <div class="content">
+            	<div class="row">
+            		<div class="col-md-12 col-sm-12 col-xs-12">
+            			<h3 class="title text-center featureHead">Easy Access</h3>
+  						<h3 class="text-center featureText" >Login into Tickdoor with your gmail or facebook login. </h3>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-12 col-sm-12 col-xs-12">
+            			<h3 class="title text-center featureHead">Few Details</h3>
+  						<h3 class="text-center featureText" >Provide us just your Address and Mobile number as you order.</h3>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-12 col-sm-12 col-xs-12">
+            			<h3 class="title text-center featureHead">Flexible Plans</h3>
+  						<h3 class="text-center featureText" >Order 20 litre water bottles. You can choose quantity and also can subscribe to our weekly, monthly and other subscription plans based on your need. </h3>
+            		</div>
+            	</div>
+         	</div><!--//content-->
+        </div><!--//item-->
+        <div class="item col-md-4 col-sm-6 col-xs-12 text-center">
+            <div class="content">
+                <div class="android-holder phone-holder">
+			        <img src="images/only_bottle.png"  alt="water can supply" />
+			    </div>
+            </div><!--//content-->
+        </div><!--//item-->
+        <div class="item col-md-4 col-sm-6 col-xs-12 text-center">
+            <div class="content">
+                <div class="row">
+            		<div class="col-md-12 col-sm-12 col-xs-12">
+            			<h3 class="title text-center featureHead">Delivery</h3>
+  						<h3 class="text-center featureText" >We deliver the Water cans to your Doorstep ASAP. </h3>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-12 col-sm-12 col-xs-12">
+            			<h3 class="title text-center featureHead">Deposit</h3>
+  						<h3 class="text-center featureText" >If you are a customer without an existing Water can, we collect a deposit of Rs.150/- (refundable) for the water can. </h3>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-12 col-sm-12 col-xs-12">
+            			<h3 class="title text-center featureHead">Cancellation</h3>
+  						<h3 class="text-center featureText" >You can cancel your orders. Just that we would need to know your cancellation a little in advance to our daily operations. </h3>
+            		</div>
+            	</div>
+            </div><!--//content-->
+        </div><!--//item-->
+    </div><!--//row-->
+	
+</template>
+
+<template name="HomeAboutus" id="aboutus">
+	<section class="" id="aboutus" >
+		<div style="background-image: url('/images/featuresBgSmall.jpg'); min-height: 500px; padding-top:80px">
+			<div class="row">
+				<div class="col-lg-12" id="content">
+					{{> HomeAboutusContent3}}
+				</div>
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="HomeAboutusContent3">
+	<div class="row">
+        <div class="item col-md-4 col-xs-6 text-center">
+            <div class="content">
+            	<div class="android-holder phone-holder">
+			        <img src="images/only_bottle.png"  alt="water can supply" />
+			    </div>
+			</div><!--//content-->
+        </div><!--//item-->
+        <div class="item col-md-6 col-xs-12 text-center" style="padding-top:80px;" >
+            <div class="content">
+            	<div class="panel panel-default" style="padding:20px;">
+				    <table class="table table-curved">
+				    	<tr>
+				    		<td>
+				    			<h3 class="title sectionHeader">About Us</h3>
+				    		</td>
+				    	</tr>
+				       <tr>
+				    		<td>
+				       			<h3 class="title sectionText">We are a small group of young enthusiasts who are trying to solve a small practical problem that we faced ourselves on a daily basis.However, we intend to do it at a larger scale ! :)</h3>
+				       		</td>
+				       	</tr>
+				    </table>
+				</div>
+            </div><!--//content-->
+        </div><!--//item-->
+    </div><!--//row-->
+</template>
+
+<template name="HomeOrdernow" id="ordernow">
+	<section class="" id="ordernow">
+		<div style="background-image: url('/images/featuresBgSmall.jpg'); ">
+			<div class="row">
+				<div class="col-lg-12" id="content">
+					{{> HomeOrdernowInsertForm}}
+				</div>
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="HomeOrdernowInsertForm">
+	<div id="home-ordernow-insert-form" class="">
+		<form role="form" class="form-orderNow">
+		<h3 class="title sectionHeader">Order Now</h3>
+			<div class="form-group  field-mobile-no">
+				<div class="form-group message">
+	                <label class="sr-only" for="mobileNo">Mobile No</label>
+	                <input id="mobileNo" type="text" name="mobileNo" class="form-control" value="" required="required" data-type="string" data-min="10" data-max="10" placeholder="Mobile No (You will get a confirmation call)">
+	                <span id="help-text" class="help-block">
+	                </span>
+					<span id="error-text" class="help-block">
+					</span>
+	            </div>
+			</div>
+			<div class="form-group  field-city">
+				<div class="input-div">
+					<select class="form-control" name="city" data-type="string" required="required">
+						<option value="" selected>Select your city...</option>
+						<option value="hyd">Hyderabad</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-watertype">
+				<div class="input-div">
+					<select class="form-control" name="watertype" data-type="string" required="required">
+						<option value="" selected>Select Water Type...</option>
+						<option value="mineralwater">Normal Mineral Water Rs. 30/- per can</option>
+						<option value="telanganajal">Telangana Jal Rs. 40/- per can</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-quantity">
+				<div class="input-div">
+					<select class="form-control" name="quantity" data-type="string" required="required">
+						<option value="" selected>Select quantity...</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-locality">
+				<div class="input-div">
+					<select class="form-control" name="locality" data-type="string" required="required">
+						<option value="" selected>Select Locality...</option>
+						<option value="Kukatpally">Kukatpally</option>
+						<option value="KPHBColony">KPHBColony</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-address">
+				<label class="sr-only" for="address">Address</label>
+			        <textarea id="address" name="address" class="form-control" placeholder="Enter your  Flat number, Apartment name"></textarea>
+			        <span id="help-text" class="help-block">
+					</span>
+			</div>
+			<div class="form-group  field-startdate">
+				<label class="sr-only" for="startdate">
+					Start Date
+				</label>
+				<div class="input-div">
+					<div class="input-group date">
+						<input type="text" name="startdate" value="" class="form-control" required="required" data-type="date" data-format="DD-MM-YYYY" placeholder="Start Date" readonly>
+						<span class="input-group-addon">
+							<i class="fa fa-calendar">
+							</i>
+						</span>
+					</div>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-deliverytype">
+				<div class="input-div">
+					<select class="form-control" name="deliverytype" data-type="string" required="required">
+						<option value="" selected>Select Delivery Type...</option>
+						<option value="Everyday">Everyday</option>
+						<option value="AlternateDays">AlternateDays</option>
+						<option value="Onetime">One Time</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit">
+						<span class="fa fa-check">
+						</span>
+						Order
+					</button>
+					<button id="form-submit-button" class="btn btn-warning" type="Reset">
+						<span class="fa fa-times">
+						</span>
+						Reset
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+
+<template name="HomeYourorders">
+	<section class="" id="yourorders" style="align:center;">
+		<div style="background-image: url('/images/featuresBgSmall.jpg'); min-height: 650px; align:center; padding-top:50px">
+			<div class="row" style=" max-width: 1200px; align:center;">
+				<div class="col-lg-12" id="content" style="">
+					{{> HomeYourordersYourorders}}
+				</div>
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="HomeYourordersYourorders">
+	<div id="home-yourorders-yourorders" class="" >
+		<h3 class="title sectionHeader">Your Orders</h3>
+		<!-- <form id="dataview-controls" class="form-inline">
+			<div id="dataview-controls-search">
+				{{#if isNotEmpty}}
+				<div id="dataview-controls-search-group" class="form-group">
+					<label class="sr-only" for="search">
+						Search
+					</label>
+					<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}">
+					<button type="button" id="dataview-search-button" class="btn btn-primary">
+						<span class="fa fa-search">
+						</span>
+					</button>
+				</div>
+				{{/if}}
+			</div>
+		</form> -->
+		{{#if isNotEmpty}}
+			{{#if isNotFound}}
+		<div class="alert alert-warning">
+			"{{searchString}}" not found.
+		</div>
+		{{else}}
+		<div id="dataview-data">
+			{{#if viewAsTable}} {{> HomeYourordersYourordersTable}} {{/if}}
+		</div>
+		{{/if}}
+		{{else}}
+		<div class="alert alert-info">
+			No orders here yet :(
+		</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="HomeYourordersYourordersTable">
+	<table id="dataview-table" class="table table-striped">
+		<thead id="dataview-table-header">
+			<tr id="dataview-table-header-row">
+				<th class="th-sortable" data-sort="city">
+					City
+				</th>
+				<th class="th-sortable" data-sort="mobileNo">
+					Mobile No
+				</th>
+				<th class="th-sortable" data-sort="watertype">
+					Water Type
+				</th>
+				<th class="th-sortable" data-sort="locality">
+					Locality
+				</th>
+				<th class="th-sortable" data-sort="address">
+					Address
+				</th>
+				<th class="th-sortable" data-sort="quantity">
+					Quantity
+				</th>
+				<th class="th-sortable" data-sort="deliverytype">
+					Delivery Type
+				</th>
+				<th class="th-sortable" data-sort="deliverytype">
+					Status
+				</th>
+				<th class="th-sortable" data-sort="startdate">
+					Start Date
+				</th>
+			</tr>
+		</thead>
+		<tbody id="dataview-table-items">
+			{{#each tableItems}} {{> HomeYourordersYourordersTableItems}} {{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="HomeYourordersYourordersTableItems">
+	<tr id="dataview-table-items-row">
+		
+		<td>
+			{{formatCity city}}
+		</td>
+		<td>
+			{{mobileNo}}
+		</td>
+		<td>
+			{{formatWaterType watertype}}
+		</td>
+		<td>
+			{{locality}}
+		</td>
+		<td>
+			{{address}}
+		</td>
+		<td>
+			{{quantity}}
+		</td>
+		<td>
+			{{deliverytype}}
+		</td>
+		<td>
+			{{status}}
+		</td>
+		<td>
+			{{formatDate startdate}}
+		</td>
+		{{#if isActive status}}
+		<td>
+			<a href="#" id="cancel-order" class="btn btn-danger btn-tny cancel-order">Cancel</a>
+		</td>
+		{{/if}}
+	</tr>
+</template>
+
