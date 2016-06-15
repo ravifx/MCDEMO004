@@ -72,8 +72,9 @@ section .large-icon {
 }
 
 #custom-nav {
-    background-color: rgba(0,0,0,0);
-    border: 0;
+    background-color: rgba(255,255,255,0.4);
+    border: 1;
+    border-color: rgba(255,255,255,0.5);
     box-shadow: none;
     z-index: 999;
     -webkit-font-smoothing: antialiased;
@@ -81,6 +82,7 @@ section .large-icon {
     -webkit-transition: background .5s ease-in-out, opacity .5s ease;
     -moz-transition: background .5s ease-in-out, opacity .5s ease;
     transition: background .5s ease-in-out, opacity .5s ease;
+    padding-bottom: 5px;
 }
 
 .navbar-default .navbar-nav > li > a {

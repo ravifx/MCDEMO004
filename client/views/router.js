@@ -34,9 +34,12 @@ Router.map(function () {
 		path: "/logout", 	
 		template:'Home'
 	});
-	this.route('dashboard', {
+	/*this.route('dashboard', {
 		path:'/dashboard',
 		template:'Home'
+	});*/
+	this.route('dashboard', function () {
+		this.render("HomeYourorders");
+		this.redirect('/');
 	});
 });
-
