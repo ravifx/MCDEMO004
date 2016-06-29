@@ -4,6 +4,7 @@
 	{{#if currentUser}}
 		{{> HomeOrdernow}}
 		{{> HomeYourorders}}
+		{{> HomeYourCoupons}}
 	{{/if}}
 	{{> HomeAboutus}}
 	<div class="page-container container" id="content">
@@ -50,7 +51,7 @@
 
 <template name="HomeFeatures">
 	<section class="bg-blue" id="features">
-	<div style="background-image: url('/images/featuresBgSmall.jpg'); min-height: 500px; padding-top:50px">
+	<div class="section-white-bg" style="min-height: 500px; padding-top:50px">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12" id="content">
@@ -121,7 +122,7 @@
 
 <template name="HomeAboutus" id="aboutus">
 	<section class="" id="aboutus" >
-		<div style="background-image: url('/images/featuresBgSmall.jpg'); min-height: 500px; padding-top:80px">
+		<div class="section-blue-bg" style="min-height: 500px; padding-top:80px">
 			<div class="row">
 				<div class="col-lg-12" id="content">
 					{{> HomeAboutusContent3}}
@@ -163,7 +164,7 @@
 
 <template name="HomeOrdernow" id="ordernow">
 	<section class="" id="ordernow">
-		<div style="background-image: url('/images/featuresBgSmall.jpg'); ">
+		<div class="section-blue-bg">
 			<div class="row">
 				<div class="col-lg-12" id="content">
 					{{> HomeOrdernowInsertForm}}
@@ -315,7 +316,7 @@
 
 <template name="HomeYourorders">
 	<section class="" id="yourorders" style="align:center;">
-		<div style="background-image: url('/images/featuresBgSmall.jpg'); min-height: 650px; align:center; padding-top:50px">
+		<div class="section-white-bg" style="min-height: 500px; align:center; padding-top:50px">
 			<div class="row" style=" max-width: 1200px; align:center;">
 				<div class="col-lg-12" id="content" style="">
 					{{> HomeYourordersYourorders}}
@@ -439,3 +440,62 @@
 	</tr>
 </template>
 
+<template name="HomeYourCoupons">
+	<section id="section-welcome" class="bg-blue">
+		<div class="section-blue-bg" style="min-height: 500px;">
+			<div id="content" class="container">
+				{{> HomeYourCouponsYourCoupons}}
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="HomeYourCouponsYourCoupons">
+	<div id="home-yourcoupons-yourcoupons" class="" >
+		<h3 class="title sectionHeader">Your Coupons</h3>
+		{{#if isEmpty}}
+		<div class="alert alert-info">
+			No coupons here yet :(
+		</div>
+		{{else}}
+			{{#each yourCoupons}}
+	
+		    	<div class="phone android col-md-4 col-sm-12 col-xs-12">
+			        <div class="android-holder phone-holder">
+			        <img src="images/{{vendorCode}}.jpg"/>
+			        </div>
+			        <div class="panel panel-default" style="padding:5px; width:320px;">
+						    <table class="table table-curved">
+						       <tr>
+						    		<td>
+						       			<div class="col-md-12 col-sm-12 col-xs-12">
+									        <p class="couponText">{{description}}</p>
+									        <p class="couponCode">Coupon Code: {{couponCode}}</p>
+									        <p class="couponCode">Expiry Date: {{formatDate expiryDate}}</p>
+									    </div>   
+						       		</td>
+						       	</tr>
+						    </table>
+						</div>
+			    </div>
+			    <!-- <div class="item col-md-4 col-xs-12">
+		            <div class="content">
+		            	<div class="panel panel-default" style="padding:5px;">
+						    <table class="table table-curved">
+						       <tr>
+						    		<td>
+						       			<div class="col-md-12 col-sm-12 col-xs-12">
+									        <h3 class="couponText">{{description}}</h3>
+									        <h3 class="couponCode">Coupon Code: {{couponCode}}</h3>
+									        <h3 class="couponCode">Expiry Date: {{formatDate expiryDate}}</h3>
+									    </div>   
+						       		</td>
+						       	</tr>
+						    </table>
+						</div>
+		            </div><//content
+		        </div>//item -->
+	    	{{/each}}
+		{{/if}}
+	</div>
+</template>

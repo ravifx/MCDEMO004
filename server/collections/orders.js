@@ -56,6 +56,25 @@ Orders.before.remove(function(userId, doc) {
 
 Orders.after.insert(function(userId, doc) {
 
+	if(this.yourorders && this.yourorders.count() == 1){
+		var coupon = {};
+		var greenTrendsPrefix = "TICKG";
+		var couponCode = Math.floor(1000 + Math.random() * 9000);
+		coupon["vendorCode"] = "GTHSS";
+		coupon["couponCode"] = greenTrendsPrefix + couponCode;
+		coupon["description"] = "Discount of 20% on bill of Rs 500 or more";
+		coupon["userId"] = userId;
+		coupon["orderId"] = doc._id;
+		coupon["createdAt"] = new Date();
+
+		var expiryDate = new Date();
+	    expiryDate.setMonth(expiryDate.getMonth() + 1);
+		console.log(expiryDate);
+		coupon["expiryDate"] = expiryDate;
+
+		coupon = deepen(coupon);
+		Coupons.insert(coupon);
+	}
 });
 
 Orders.after.update(function(userId, doc, fieldNames, modifier, options) {

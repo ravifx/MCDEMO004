@@ -126,6 +126,7 @@ Template.HomeOrdernowInsertForm.events({
 				}
 			}
 			this.subscribe("yourorders");
+			this.subscribe("yourcoupons");
 			Router.go("/home", {});
 		}
 
@@ -142,15 +143,6 @@ Template.HomeOrdernowInsertForm.events({
 
 			},
 			function(values) {
-				//console.log(values);
-				/*this.yourorders.insert(values, function(e) { 
-					if(e) {
-
-						errorAction(e); 
-					} else {
-						submitAction("Your Order has been successfully placed, Thank you."); 
-					}
-				});*/
 
 				 Meteor.call('orders.insertvalues', values, function(e) { 
 					if(e) {
@@ -164,14 +156,6 @@ Template.HomeOrdernowInsertForm.events({
 					}
 				});
 
-				/*newId = Orders.insert(values, function(e) { 
-					if(e) {
-						console.log("error"+e);
-						errorAction(e); 
-					} else {
-						submitAction(); 
-					}
-				});*/
 			}
 		);
 
@@ -552,4 +536,20 @@ Template.HomeYourordersYourordersTableItems.helpers({
 		 }
 	},
 	
+});
+
+Template.HomeYourCouponsYourCoupons.helpers({
+
+	"isEmpty": function() {
+		return !this.yourcoupons || this.yourcoupons.count() == 0;
+	},
+	"isNotEmpty": function() {
+		return this.yourcoupons && this.yourcoupons.count() > 0;
+	},
+	"yourCoupons": function() {
+		return this.yourcoupons.fetch();
+	},
+	"formatDate": function (date) {
+	 return moment(date).format('DD/MM/YYYY');
+	}	
 });

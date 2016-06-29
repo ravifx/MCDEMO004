@@ -11,3 +11,17 @@ this.Orders.userCanUpdate = function(userId, doc) {
 this.Orders.userCanRemove = function(userId, doc) {
 	return true;
 };
+
+this.Coupons = new Mongo.Collection("coupons");
+
+this.Coupons.userCanInsert = function(userId, doc) {
+	return true;
+};
+
+this.Coupons.userCanUpdate = function(userId, doc) {
+	return true;
+};
+
+this.Coupons.userCanRemove = function(userId, doc) {
+	return true;
+};

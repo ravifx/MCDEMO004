@@ -1,5 +1,9 @@
 Meteor.publish("yourorders", function() {
-	return Orders.find({}, {});
+	if(this.userId){
+		return Orders.find({createdBy:this.userId}, {});
+	}else{
+		return Orders.find({_id:null}, {});
+	}
 });
 
 Meteor.publish("orders_empty", function() {

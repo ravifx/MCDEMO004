@@ -182,3 +182,36 @@ section .large-icon {
 #home-yourorders-yourorders {
   padding-left: 15%;
 }
+
+#home-temp {
+  padding-left: 15%;
+}
+
+.section-white-bg {
+  background-color: #ffffff;
+}
+.section-blue-bg {
+  background-color: #d7ebf5;
+}
+
+.couponCode { 
+  background: #fe921f;
+  color: #ffffff;
+  display: inline-block;
+  font-family: 'Lato',sans-serif;
+  font-size: 12px; 
+  font-weight: bold; 
+  line-height: 12px; 
+  letter-spacing: 1px; 
+  margin: 0 0 10px; 
+  padding: 10px 15px 8px; 
+  text-transform: uppercase; 
+}
+
+.couponText {
+  color: #fe921f;
+  display: inline-block;
+  font-family: 'Lato',sans-serif;
+  font-size: 14px; 
+  letter-spacing: 1px; 
+}

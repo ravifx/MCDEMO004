@@ -40,6 +40,7 @@ Router.map(function () {
 	});*/
 	this.route('dashboard', function () {
 		this.render("HomeYourorders");
+		this.render("HomeYourCoupons");
 		this.redirect('/');
 	});
 });
