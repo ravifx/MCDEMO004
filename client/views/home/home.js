@@ -153,6 +153,7 @@ Template.HomeOrdernowInsertForm.events({
 						Template.HomeYourordersYourordersTable.rendered();
 
 						submitAction("Your Order has been successfully placed, Thank you."); 
+
 					}
 				});
 
@@ -256,13 +257,15 @@ var HomeYourordersYourordersItems = function(cursor) {
 	}
 
 	// sort
+	sortBy = "createdAt";
+	console.log("sortBy: "+sortBy);
+	console.log("sortAscending: "+sortAscending);
+
 	if(sortBy) {
 		filtered = _.sortBy(filtered, sortBy);
 
 		// descending?
-		if(!sortAscending) {
-			filtered = filtered.reverse();
-		}
+		filtered = filtered.reverse();
 	}
 
 	return filtered;

@@ -122,7 +122,11 @@
 
 <template name="HomeAboutus" id="aboutus">
 	<section class="" id="aboutus" >
-		<div class="section-blue-bg" style="min-height: 500px; padding-top:80px">
+		<div class="{{#if currentUser}}
+					section-white-bg
+				{{else}}
+					section-blue-bg
+				{{/if}}" style="min-height: 500px; padding-top:80px">
 			<div class="row">
 				<div class="col-lg-12" id="content">
 					{{> HomeAboutusContent3}}
@@ -278,6 +282,29 @@
 						<option value="Everyday">Everyday</option>
 						<option value="AlternateDays">AlternateDays</option>
 						<option value="Onetime">One Time</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group  field-deliverytime">
+				<div class="input-div">
+					<select class="form-control" name="deliverytime" data-type="string" required="required">
+						<option value="" selected>Select Delivery Time...</option>
+						<option value="09AM10AM">09AM - 10AM</option>
+						<option value="10AM11AM">10AM - 11AM</option>
+						<option value="11AM12PM">11AM - 12PM</option>
+						<option value="12PM01PM">12PM - 01PM</option>
+						<option value="01PM02PM">01PM - 02PM</option>
+						<option value="02PM03PM">02PM - 03PM</option>
+						<option value="03PM04PM">03PM - 04PM</option>
+						<option value="04PM05PM">04PM - 05PM</option>
+						<option value="05PM06PM">05PM - 06PM</option>
+						<option value="06PM07PM">06PM - 07PM</option>
+						<option value="07PM08PM">07PM - 08PM</option>
+						<option value="08PM09PM">08PM - 09PM</option>
 					</select>
 					<span id="help-text" class="help-block">
 					</span>
@@ -441,7 +468,7 @@
 </template>
 
 <template name="HomeYourCoupons">
-	<section id="section-welcome" class="bg-blue">
+	<section id="yourcoupons" class="bg-blue">
 		<div class="section-blue-bg" style="min-height: 500px;">
 			<div id="content" class="container">
 				{{> HomeYourCouponsYourCoupons}}
@@ -451,10 +478,10 @@
 </template>
 
 <template name="HomeYourCouponsYourCoupons">
-	<div id="home-yourcoupons-yourcoupons" class="" >
+	<div id="home-yourcoupons-yourcoupons" class="" style="align: center; padding-left: 6.5%;">
 		<h3 class="title sectionHeader">Your Coupons</h3>
 		{{#if isEmpty}}
-		<div class="alert alert-info">
+		<div class="alert alert-info" style="max-width: 990px;">
 			No coupons here yet :(
 		</div>
 		{{else}}
