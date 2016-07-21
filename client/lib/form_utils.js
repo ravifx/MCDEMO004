@@ -60,6 +60,7 @@ this.secondsToTime = function(seconds, timeFormat) {
 this.validateForm = function(formObject, validationCallback, errorCallback, submitCallback) {
 	var values = {};
 	var error = false;
+
 	formObject.find("input,select,textarea").each(function() {
 		var skipValue = false;
 		var inputObject = $(this);
@@ -169,17 +170,17 @@ this.validateForm = function(formObject, validationCallback, errorCallback, subm
 
 				if(minValue && !isNaN(parseInt(minValue)) && intValue < parseInt(minValue)) {
 					if(maxValue && !isNaN(parseInt(maxValue)))
-						validationError(labelText + " must be between " + minValue + " and " + maxValue);
+						validationError(labelText + " must be a valid one");
 					else
-						validationError(labelText + " must be equal or greater than " + minValue);
+						validationError(labelText + " must be a valid one");
 					return false;
 				}
 
 				if(maxValue && !isNaN(parseInt(maxValue)) && intValue > parseInt(maxValue)) {
 					if(minValue && !isNaN(parseInt(minValue)))
-						validationError(labelText + " must be between " + minValue + " and " + maxValue);
+						validationError(labelText + " must be a valid one");
 					else
-						validationError(labelText + " must be equal or less than " + maxValue);
+						validationError(labelText + " must be a valid one" );
 					return false;
 				}
 				fieldValue = intValue;

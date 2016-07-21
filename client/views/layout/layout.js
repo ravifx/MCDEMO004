@@ -70,3 +70,74 @@ Template.FreeLayoutMainMenu.events({
 Template.FreeLayoutMainMenu.helpers({
 	
 });
+
+Template.UserInfo.helpers({
+	"deliveryCount": function() {
+
+		if(this.yourdeliveries){
+			var filtered = _.filter(this.yourdeliveries.fetch(), function(obj) {
+	    		return obj.status === "DELIVERED";
+			});
+
+			return filtered.length;
+		} else {
+			return 0;
+		}
+	},
+	"nextcoupon": function() {
+		
+		if(this.yourdeliveries){
+			if(this.yourorders.count() == 0){
+				return 1;
+			}
+
+			var filtered = _.filter(this.yourdeliveries.fetch(), function(obj) {
+	    		return obj.status === "DELIVERED";
+			});
+
+			return 100 - filtered.length;
+		} else {
+			return 0;
+		}
+	}
+});
+
+
+Template.FreeLayout.helpers({
+	"isAdmin": function() {
+
+		if (Meteor.user() && Meteor.user().services.google && (Meteor.user().services.google.email === 'ravifx@gmail.com' || Meteor.user().services.google.email === 'azadfx@gmail.com')){
+			return true;
+		} else {
+			return false;
+		}
+	},
+	"isNotAdmin": function() {
+
+		if (!Meteor.user() || !Meteor.user().services.google || (!(Meteor.user().services.google.email === 'ravifx@gmail.com') && !(Meteor.user().services.google.email === 'azadfx@gmail.com'))){
+			return true;
+		} else {
+			return false;
+		}
+	}
+});
+
+Template.HomeJumbotronJumbotronContent.helpers({
+	"isAdmin": function() {
+
+		if (Meteor.user() && Meteor.user().services.google && (Meteor.user().services.google.email === 'ravifx@gmail.com' || Meteor.user().services.google.email === 'azadfx@gmail.com')){
+			return true;
+		} else {
+			return false;
+		}
+	},
+	"isNotAdmin": function() {
+
+		if (!Meteor.user() || !Meteor.user().services.google || (!(Meteor.user().services.google.email === 'ravifx@gmail.com') && !(Meteor.user().services.google.email === 'azadfx@gmail.com'))){
+			return true;
+		} else {
+			return false;
+		}
+	}
+});
+

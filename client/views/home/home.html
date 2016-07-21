@@ -39,6 +39,9 @@
         {{else}}
         	<a href="/sign-in" class="btn btn-lg btn-warning">Order Now</a>
         {{/if}}
+        {{# if isAdmin}}
+        	<a href="/admin" class="btn btn-lg btn-warning">Deliveries</a>
+        {{/if}}
     </div>
 
     <div class="phone android col-md-4 col-sm-12 col-xs-12">
@@ -181,11 +184,16 @@
 <template name="HomeOrdernowInsertForm">
 	<div id="home-ordernow-insert-form" class="">
 		<form role="form" class="form-orderNow">
-		<h3 class="title sectionHeader">Order Now</h3>
+		<h3 class="title sectionHeader" style="margin-bottom: 0px; margin-top: 5px;">Order Now</h3>
+		{{# if noUserData}}
+			<h3 class="title requiredOnlyFirst" style="margin-top: 0px;">(You need to enter below details only for your 1st order)</h3>
+		{{else}}
+			<br/>
+		{{/if}}
 			<div class="form-group  field-mobile-no">
 				<div class="form-group message">
 	                <label class="sr-only" for="mobileNo">Mobile No</label>
-	                <input id="mobileNo" type="text" name="mobileNo" class="form-control" value="" required="required" data-type="string" data-min="10" data-max="10" placeholder="Mobile No (You will get a confirmation call)">
+	                <input id="mobileNo" type="number" name="mobileNo" class="form-control" value="{{#if hasUserData}}{{userData.mobileNo}}{{/if}}" required="required" data-type="integer" data-min="6000000000" data-max="9999999999" placeholder="Mobile No (You will get a confirmation call)">
 	                <span id="help-text" class="help-block">
 	                </span>
 					<span id="error-text" class="help-block">
@@ -193,10 +201,21 @@
 	            </div>
 			</div>
 			<div class="form-group  field-city">
-				<div class="input-div">
+				<div class="field-small">
 					<select class="form-control" name="city" data-type="string" required="required">
 						<option value="" selected>Select your city...</option>
-						<option value="hyd">Hyderabad</option>
+						<option value="hyd" selected="selected">Hyderabad</option>
+					</select>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+				<div class="field-small">
+					<select class="form-control" name="locality" data-type="string" required="required">
+						<option value="" selected>Select Locality...</option>
+						<option value="Kukatpally">Kukatpally</option>
+						<option value="KPHBColony">KPHB Colony</option>
 					</select>
 					<span id="help-text" class="help-block">
 					</span>
@@ -238,45 +257,45 @@
 					</span>
 				</div>
 			</div>
-			<div class="form-group  field-locality">
-				<div class="input-div">
-					<select class="form-control" name="locality" data-type="string" required="required">
-						<option value="" selected>Select Locality...</option>
-						<option value="Kukatpally">Kukatpally</option>
-						<option value="KPHBColony">KPHBColony</option>
-					</select>
-					<span id="help-text" class="help-block">
-					</span>
-					<span id="error-text" class="help-block">
-					</span>
-				</div>
-			</div>
 			<div class="form-group  field-address">
 				<label class="sr-only" for="address">Address</label>
-			        <textarea id="address" name="address" class="form-control" required="required" placeholder="Enter your  Flat number, Apartment name"></textarea>
+			        <textarea id="address" name="address" class="form-control" required="required" placeholder="Enter Flat/Door No, Building/Apartment Name, Street/Road Name and Any Land Marks...">{{#if hasUserData}}{{userData.address}}{{/if}}</textarea>
 			        <span id="help-text" class="help-block">
 					</span>
 			</div>
 			<div class="form-group  field-startdate">
-				<label class="sr-only" for="startdate">
-					Start Date
+				<label class="sr-only" for="fromdate">
+					From Date
 				</label>
-				<div class="input-div">
+				<label class="sr-only" for="todate">
+					To Date
+				</label>
+				<div class="input-div field-small">
 					<div class="input-group date">
-						<input type="text" name="startdate" value="" class="form-control" required="required" data-type="date" data-format="DD-MM-YYYY" placeholder="Start Date" readonly>
+						<input type="text" name="fromdate" value="" class="form-control" required="required" data-type="date" data-format="DD-MM-YYYY" placeholder="From Date">
 						<span class="input-group-addon">
 							<i class="fa fa-calendar">
 							</i>
 						</span>
 					</div>
-					<span id="help-text" class="help-block">
-					</span>
-					<span id="error-text" class="help-block">
-					</span>
+					
 				</div>
+				<div class="input-div field-small">
+					<div class="input-group date">
+						<input type="text" name="todate" value="" class="form-control" required="required" data-type="date" data-format="DD-MM-YYYY" placeholder="To Date">
+						<span class="input-group-addon">
+							<i class="fa fa-calendar">
+							</i>
+						</span>
+					</div>
+				</div>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
 			</div>
 			<div class="form-group  field-deliverytype">
-				<div class="input-div">
+				<div class="input-div field-small">
 					<select class="form-control" name="deliverytype" data-type="string" required="required">
 						<option value="" selected>Select Delivery Type...</option>
 						<option value="Everyday">Everyday</option>
@@ -288,9 +307,7 @@
 					<span id="error-text" class="help-block">
 					</span>
 				</div>
-			</div>
-			<div class="form-group  field-deliverytime">
-				<div class="input-div">
+				<div class="input-div field-small">
 					<select class="form-control" name="deliverytime" data-type="string" required="required">
 						<option value="" selected>Select Delivery Time...</option>
 						<option value="09AM10AM">09AM - 10AM</option>
@@ -431,7 +448,6 @@
 
 <template name="HomeYourordersYourordersTableItems">
 	<tr id="dataview-table-items-row">
-		
 		<td>
 			{{formatCity city}}
 		</td>
@@ -457,7 +473,7 @@
 			{{status}}
 		</td>
 		<td>
-			{{formatDate startdate}}
+			{{formatDate fromdate}}
 		</td>
 		{{#if isActive status}}
 		<td>
@@ -491,14 +507,16 @@
 			        <div class="android-holder phone-holder">
 			        <img src="images/{{vendorCode}}.jpg"/>
 			        </div>
-			        <div class="panel panel-default" style="padding:5px; width:320px;">
+			        <div class="panel panel-default" style="padding:3px; width:320px;">
 						    <table class="table table-curved">
 						       <tr>
 						    		<td>
 						       			<div class="col-md-12 col-sm-12 col-xs-12">
-									        <p class="couponText">{{description}}</p>
-									        <p class="couponCode">Coupon Code: {{couponCode}}</p>
-									        <p class="couponCode">Expiry Date: {{formatDate expiryDate}}</p>
+									        <div class="couponText">{{description}}</div>
+									        <div class="couponCode" style="min-width:100%">
+									        <div style="display: inline-block; float:left" >Coupon: {{couponCode}}</div>
+									        <div style="display: inline-block; float:right; text-align: right;" >Expires: {{formatDate expiryDate}}</div>
+									        </div>
 									    </div>   
 						       		</td>
 						       	</tr>

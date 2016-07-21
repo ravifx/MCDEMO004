@@ -151,6 +151,24 @@ section .large-icon {
   border-bottom-left-radius: 0;
 }
 
+.field-small{
+  display: inline-block;
+  width: 49.5%;
+  margin-bottom: 0px;
+}
+
+.field-city{
+  margin-bottom: 5px;
+}
+
+.field-startdate{
+  margin-bottom: 0px;
+}
+
+.field-deliverytype{
+  margin-bottom: 5px;
+}
+
 .footer-container {
 	text-align: center;
 	background-color:#0b83b6;
@@ -199,12 +217,12 @@ section .large-icon {
   color: #ffffff;
   display: inline-block;
   font-family: 'Lato',sans-serif;
-  font-size: 12px; 
+  font-size: 11px; 
   font-weight: bold; 
   line-height: 12px; 
   letter-spacing: 1px; 
   margin: 0 0 10px; 
-  padding: 10px 15px 8px; 
+  padding: 10px 5px 10px; 
   text-transform: uppercase; 
 }
 
@@ -214,4 +232,67 @@ section .large-icon {
   font-family: 'Lato',sans-serif;
   font-size: 14px; 
   letter-spacing: 1px; 
+}
+
+.requiredOnlyFirst {
+  font-size: 16px;
+  color: #1b9c6f;
+  font-weight: 700;
+  font-style: italic;
+  font-family: 'Lato', sans-serif;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip-top {
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #ccc;
+    color: #006080;
+}
+
+.entry {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.entry-social {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.sticky-wrapper {
+  background-color: #d7ebf5;
+}
+
+.welcomemsg {
+  display: inline-block;
+  margin: 0px;
 }

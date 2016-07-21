@@ -1,0 +1,159 @@
+<template name="Admin">
+	{{> AdminJumbotron}}
+	{{> Deliveries}}
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="AdminJumbotron">
+	<section id="section-welcome" class="bg-blue">
+		<div class="jumbotron " style="background-image: url('/images/jumbotron-bg.jpg'); min-height: 550px;">
+			<div id="content" class="container">
+				<p id="jumbotron-text">
+				</p>
+				{{> AdminJumbotronJumbotronContent}}
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="AdminJumbotronJumbotronContent">
+
+	<div class="overview col-md-8 col-sm-12 col-xs-12" style="padding-top: 100px">
+        <h2 class="title1">Get 20 litres water cans delivered at your doorstep just by a click of a button !!</h2>
+        <h3 class="title2">We deliver 20 litres water bottles to your doorstep whenever you need it.Period.</h3>
+        <a href="/" class="btn btn-lg btn-warning">Back</a>
+    </div>
+
+    <div class="phone android col-md-4 col-sm-12 col-xs-12">
+        <div class="android-holder phone-holder">
+        <img src="images/only_bottle.png"  alt="water can supply" />
+        </div>
+    </div>
+
+</template>
+
+<template name="Deliveries">
+	<section class="" id="deliveries" style="align:center;">
+		<div class="section-white-bg" style="min-height: 500px; align:center; padding-top:50px">
+			<div class="row" style=" max-width: 1200px; align:center;">
+				<div class="col-lg-12" id="content" style="">
+					{{> DeliveriesContent}}
+				</div>
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="DeliveriesContent">
+	<div id="home-yourorders-yourorders" class="" >
+		<h3 class="title sectionHeader">Deliveries</h3>
+		<form id="dataview-controls" class="form-inline">
+			<div id="dataview-controls-search">
+				{{#if isNotEmpty}}
+				<div id="dataview-controls-search-group" class="form-group">
+					<label class="sr-only" for="search">
+						Search
+					</label>
+					<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}">
+					<button type="button" id="dataview-search-button" class="btn btn-primary">
+						<span class="fa fa-search">
+						</span>
+					</button>
+				</div>
+				{{/if}}
+			</div>
+		</form>
+		{{#if isNotEmpty}}
+			{{#if isNotFound}}
+		<div class="alert alert-warning">
+			"{{searchString}}" not found.
+		</div>
+			{{else}}
+			<div id="dataview-data">
+				{{#if viewAsTable}} {{> DeliveriesTable}} {{/if}}
+			</div>
+			{{/if}}
+		{{else}}
+		<div class="alert alert-info">
+			No Deliveries here yet :(
+		</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="DeliveriesTable">
+	<table id="dataview-table" class="table table-striped">
+		<thead id="dataview-table-header">
+			<tr id="dataview-table-header-row">
+				<th class="th-sortable" data-sort="date">
+					Date
+				</th>
+				<th class="th-sortable" data-sort="city">
+					City
+				</th>
+				<th class="th-sortable" data-sort="mobileNo">
+					Mobile No
+				</th>
+				<th class="th-sortable" data-sort="watertype">
+					Water Type
+				</th>
+				<th class="th-sortable" data-sort="locality">
+					Locality
+				</th>
+				<th class="th-sortable" data-sort="address">
+					Address
+				</th>
+				<th class="th-sortable" data-sort="quantity">
+					Quantity
+				</th>
+				<th class="th-sortable" data-sort="deliverytype">
+					Status
+				</th>
+			</tr>
+		</thead>
+		<tbody id="dataview-table-items">
+			{{#each tableItems}} {{> DeliveriesTableItems}} {{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="DeliveriesTableItems">
+	<tr id="dataview-table-items-row">
+		<td>
+			{{formatDate createdAt}}
+		</td>
+		<td>
+			{{formatCity city}}
+		</td>
+		<td>
+			{{mobileNo}}
+		</td>
+		<td>
+			{{formatWaterType watertype}}
+		</td>
+		<td>
+			{{locality}}
+		</td>
+		<td>
+			{{address}}
+		</td>
+		<td>
+			{{quantity}}
+		</td>
+		<td>
+			{{status}}
+		</td>
+		{{#if isDraft status}}
+		<td>
+			<a href="#" id="Confirm-Delivery" class="btn btn-danger btn-tny cancel-order">Delivered?</a>
+		</td>
+		{{/if}}
+	</tr>
+</template>

@@ -1,14 +1,14 @@
-this.HomeController = RouteController.extend({
-	template: "Home",
+this.AdminController = RouteController.extend({
+	template: "Admin",
 	
 
 	yieldTemplates: {
 		/*YIELD_TEMPLATES*/
 	},
 
-	onBeforeAction: function() {
+	/*onBeforeAction: function() {
 		this.next();
-	},
+	},*/
 
 	action: function() {
 		if(this.isReady()) { this.render(); } else { this.render("loading"); }

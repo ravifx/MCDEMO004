@@ -38,4 +38,5 @@ accounts-facebook
 accounts-google
 #service-configuration
 selaias:accounts-entry
+percolate:synced-cron
 msavin:mongol

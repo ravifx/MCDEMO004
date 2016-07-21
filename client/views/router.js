@@ -38,9 +38,28 @@ Router.map(function () {
 		path:'/dashboard',
 		template:'Home'
 	});*/
+
 	this.route('dashboard', function () {
 		this.render("HomeYourorders");
 		this.render("HomeYourCoupons");
+		this.render("HomeOrdernowInsertForm");
+		this.render("UserInfo");
 		this.redirect('/');
+	});
+
+	this.route("admin", {
+		path: "/admin", 	
+		template:'Admin',
+		onBeforeAction: function (pause) {
+			//console.log("Before ADMIN"+Meteor.user().services.google.email);
+			if(!Meteor.user()){
+				this.redirect('/sign-in');
+			}else if (Meteor.user() && (Meteor.user().services.google.email === 'ravifx@gmail.com' || Meteor.user().services.google.email === 'azadfx@gmail.com')) {
+            	this.render('Admin');
+            }else{
+            	this.redirect('/');
+            }
+            this.next();
+        }
 	});
 });

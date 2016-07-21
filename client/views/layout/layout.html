@@ -38,6 +38,11 @@
 				</div>
 			</div>
 		</div>
+		{{#if currentUser}}
+			{{#if isNotAdmin}}
+				{{> UserInfo}}
+			{{/if}}
+		{{/if}}
 		{{> yield}}
 	</div>
 	<div id="footer" class="sticky-footer">
@@ -45,6 +50,28 @@
 			<p class="text-muted footerText">
 				Copyright &copy; www.tickdoor.com 2016
 			</p>
+		</div>
+	</div>
+</template>
+
+<template name="UserInfo">
+	<div id="userinfo" class="navbar-fixed-top" style="z-index: 999; text-align: center; background-color: rgb(185, 237, 245); border-color: rgba(255,255,255,0.5); border-style: solid; border-width: 0 0 1px; max-height:50px; padding-top:5px; padding-bottom:5px; margin-top:56px"> 
+		<div class="container">
+			<div class="welcomemsg" style="float:left">
+				<p style="margin:0px">
+					Welcome {{currentUser.profile.name}}
+				</p>
+			</div>
+			<div class="welcomemsg">
+				<p style="padding-left:15px; margin:0px">
+					Your Count : {{deliveryCount}} Can(s)
+				</p>
+			</div>
+			<div class="welcomemsg" style="float:right">
+				<p style="padding-left:15px; padding-right:15px; margin:0px">
+					Next Coupon after {{nextcoupon}} Can(s)
+				</p>
+			</div>
 		</div>
 	</div>
 </template>

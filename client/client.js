@@ -111,3 +111,14 @@ Helpers.cursorEmpty = function(cursor) {
 _.each(Helpers, function (helper, key) {
 	Handlebars.registerHelper(key, helper)
 });
+
+
+$(window).scroll( function() {
+    var value = $(window).scrollTop();
+    //console.log("SCROLL::: "+value);
+    if ( value > 0 )
+        $("#userinfo").css("visibility", "hidden");
+    else
+        $("#userinfo").css("visibility", "visible");
+
+});

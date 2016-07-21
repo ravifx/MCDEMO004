@@ -14,7 +14,6 @@ Coupons.allow({
 
 Meteor.methods({
   'coupons.insertvalues'(values) {
-
   	Coupons.insert(values);
   }
 });

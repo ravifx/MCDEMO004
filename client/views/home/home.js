@@ -80,7 +80,7 @@ Template.HomeOrdernowInsertForm.rendered = function() {
 		}
 
 		var date = new Date();
-		date.setDate(date.getDate() + 1)
+		date.setDate(date.getDate())
 
 		$(this).datepicker({
 			autoclose: true,
@@ -115,6 +115,7 @@ Template.HomeOrdernowInsertForm.events({
 			if(!t.find("#form-cancel-button")) {
 				switch(homeOrdernowInsertFormMode) {
 					case "insert": {
+
 						pageSession.set("homeOrdernowInsertFormInfoMessage", msg);
 						$(e.target)[0].reset();
 					}; break;
@@ -125,8 +126,11 @@ Template.HomeOrdernowInsertForm.events({
 					}; break;
 				}
 			}
+
 			this.subscribe("yourorders");
 			this.subscribe("yourcoupons");
+			this.subscribe("yourdetails");
+
 			Router.go("/home", {});
 		}
 
@@ -152,7 +156,21 @@ Template.HomeOrdernowInsertForm.events({
 
 						Template.HomeYourordersYourordersTable.rendered();
 
-						submitAction("Your Order has been successfully placed, Thank you."); 
+						Meteor.call('orders.count', Meteor.userId(), function(e, result) { 
+							if(e) {
+
+								errorAction(e); 
+							} else {
+								
+								if(result == 1){
+									console.log("HHHHHHHH "+result);
+									submitAction("Your Order has been successfully placed, Thank you. Congratulations, You have recieved a coupon on your 1st order, Scroll down for details.");
+								} else {
+									submitAction("Your Order has been successfully placed, Thank you."); 
+								}
+							}
+						});
+						
 
 					}
 				});
@@ -187,9 +205,27 @@ Template.HomeOrdernowInsertForm.helpers({
 	},
 	"errorMessage": function() {
 		return pageSession.get("homeOrdernowInsertFormErrorMessage");
+	},
+	"noUserData": function() {
+		return !this.yourdetails || this.yourdetails.count() == 0;
+	},
+	"hasUserData": function() {
+		return this.yourdetails && this.yourdetails.count() > 0;
+	},
+	"userData": function() {
+		return HomeYourDetails(this.yourdetails);
 	}
 	
 });
+
+var HomeYourDetails = function(cursor) {
+	if(!cursor) {
+		return [];
+	}
+
+	return cursor.fetch()[0];
+
+};
 
 Template.HomeYourorders.events({
 
@@ -258,8 +294,6 @@ var HomeYourordersYourordersItems = function(cursor) {
 
 	// sort
 	sortBy = "createdAt";
-	console.log("sortBy: "+sortBy);
-	console.log("sortAscending: "+sortAscending);
 
 	if(sortBy) {
 		filtered = _.sortBy(filtered, sortBy);
