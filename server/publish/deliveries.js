@@ -5,9 +5,21 @@ Meteor.publish("yourdeliveries", function() {
 		const user = Meteor.users.findOne(this.userId);
 		if(user && user.services && user.services.google && (user.services.google.email === "ravifx@gmail.com" || user.services.google.email === "azadfx@gmail.com")){
 			return Deliveries.find({});
+		}else{
+
+			const user = Meteor.users.findOne(this.userId);
+
+			if(user && user.services && user.services.google && user.services.google.email){
+				var vendors = Vendors.find({email:user.services.google.email}, {}).fetch();
+				if(vendors && vendors[0] && vendors[0].locality){
+
+				console.log("vendorsvendorsvendors2 :"+vendors[0].locality);
+				return Deliveries.find({locality:vendors[0].locality});
+				} 
+			}
 		}
 		
-		return Deliveries.find({userId:this.userId}, {});
+		return Deliveries.find({_id:null}, {});
 	}else{
 		return Deliveries.find({_id:null}, {});
 	}

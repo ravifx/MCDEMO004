@@ -105,39 +105,25 @@ Template.UserInfo.helpers({
 
 Template.FreeLayout.helpers({
 	"isAdmin": function() {
-
-		if (Meteor.user() && Meteor.user().services.google && (Meteor.user().services.google.email === 'ravifx@gmail.com' || Meteor.user().services.google.email === 'azadfx@gmail.com')){
-			return true;
-		} else {
-			return false;
-		}
+		return Session.get('isAdmin');
 	},
 	"isNotAdmin": function() {
-
-		if (!Meteor.user() || !Meteor.user().services.google || (!(Meteor.user().services.google.email === 'ravifx@gmail.com') && !(Meteor.user().services.google.email === 'azadfx@gmail.com'))){
-			return true;
-		} else {
-			return false;
-		}
+		return !Session.get('isAdmin');
+	},
+	"isVendor": function() {
+		return Session.get('isVendor');
+	},
+	"isNotVendor": function() {
+		return !Session.get('isVendor');
 	}
 });
 
 Template.HomeJumbotronJumbotronContent.helpers({
 	"isAdmin": function() {
-
-		if (Meteor.user() && Meteor.user().services.google && (Meteor.user().services.google.email === 'ravifx@gmail.com' || Meteor.user().services.google.email === 'azadfx@gmail.com')){
-			return true;
-		} else {
-			return false;
-		}
+		return Session.get('isAdmin');
 	},
 	"isNotAdmin": function() {
-
-		if (!Meteor.user() || !Meteor.user().services.google || (!(Meteor.user().services.google.email === 'ravifx@gmail.com') && !(Meteor.user().services.google.email === 'azadfx@gmail.com'))){
-			return true;
-		} else {
-			return false;
-		}
+		return !Session.get('isAdmin');
 	}
 });
 

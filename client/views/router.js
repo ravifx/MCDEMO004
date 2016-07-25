@@ -24,7 +24,19 @@ Router.onBeforeAction(function() {
 Router.map(function () {
 	this.route("home", {
 		path: "/", 
-		template:'Home'
+		template:function () {
+
+			var isVendor = Session.get('isVendor');
+			var isAdmin = Session.get('isAdmin');
+
+			if(isVendor){
+				return "Vendor";
+			}else if(isAdmin){
+				return "Admin";
+			}else{
+				return "Home";
+			}
+		}
 	});
 	this.route("home2", {
 		path: "/home", 	
@@ -34,32 +46,27 @@ Router.map(function () {
 		path: "/logout", 	
 		template:'Home'
 	});
-	/*this.route('dashboard', {
-		path:'/dashboard',
-		template:'Home'
-	});*/
 
 	this.route('dashboard', function () {
 		this.render("HomeYourorders");
 		this.render("HomeYourCoupons");
 		this.render("HomeOrdernowInsertForm");
 		this.render("UserInfo");
-		this.redirect('/');
+		if(Session.get('isVendor')){
+			this.redirect('/vendor');
+		}else if(Session.get('isAdmin')){
+			this.redirect('/admin');
+		}else{
+			this.redirect('/');
+		}
 	});
 
-	this.route("admin", {
-		path: "/admin", 	
-		template:'Admin',
-		onBeforeAction: function (pause) {
-			//console.log("Before ADMIN"+Meteor.user().services.google.email);
-			if(!Meteor.user()){
-				this.redirect('/sign-in');
-			}else if (Meteor.user() && (Meteor.user().services.google.email === 'ravifx@gmail.com' || Meteor.user().services.google.email === 'azadfx@gmail.com')) {
-            	this.render('Admin');
-            }else{
-            	this.redirect('/');
-            }
-            this.next();
-        }
+	this.route("/admin", function(){
+	    this.redirect('/');
 	});
+
+	this.route("/vendor", function(){
+	  	this.redirect('/');
+	});
+
 });

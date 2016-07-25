@@ -1,0 +1,39 @@
+<template name="Vendor">
+	{{> VendorJumbotron}}
+	{{> Deliveries}}
+	<div class="page-container container" id="content">
+		<div class="row" id="title_row">
+			<div class="col-md-12">
+				<div id="page_menu" class="pull-right">
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="VendorJumbotron">
+	<section id="section-welcome" class="bg-blue">
+		<div class="jumbotron " style="background-image: url('/images/jumbotron-bg.jpg'); min-height: 550px;">
+			<div id="content" class="container">
+				<p id="jumbotron-text">
+				</p>
+				{{> VendorJumbotronJumbotronContent}}
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="VendorJumbotronJumbotronContent">
+
+	<div class="overview col-md-8 col-sm-12 col-xs-12" style="padding-top: 100px">
+        <h2 class="title1">Get 20 litres water cans delivered at your doorstep just by a click of a button !!</h2>
+        <h3 class="title2">We deliver 20 litres water bottles to your doorstep whenever you need it.Period.</h3>
+    </div>
+
+    <div class="phone android col-md-4 col-sm-12 col-xs-12">
+        <div class="android-holder phone-holder">
+        <img src="images/only_bottle.png"  alt="water can supply" />
+        </div>
+    </div>
+
+</template>

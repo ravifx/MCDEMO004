@@ -23,7 +23,8 @@ this.HomeController = RouteController.extend({
 			Meteor.subscribe("yourorders"),
 			Meteor.subscribe("yourcoupons"),
 			Meteor.subscribe("yourdetails"),
-			Meteor.subscribe("yourdeliveries")
+			Meteor.subscribe("yourdeliveries"),
+			Meteor.subscribe("yourvendors")
 		];
 		var ready = true;
 		_.each(subs, function(sub) {
@@ -41,7 +42,8 @@ this.HomeController = RouteController.extend({
 			yourorders: Orders.find({}, {}),
 			yourcoupons: Coupons.find({}, {}),
 			yourdetails: Userdetails.find({}, {}),
-			yourdeliveries: Deliveries.find({}, {})
+			yourdeliveries: Deliveries.find({}, {}),
+			yourvendors: Vendors.find({}, {})
 		};
 
 		return data;

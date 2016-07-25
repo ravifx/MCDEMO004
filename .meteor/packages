@@ -40,3 +40,4 @@ accounts-google
 selaias:accounts-entry
 percolate:synced-cron
 msavin:mongol
+session

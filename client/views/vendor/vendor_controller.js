@@ -43,7 +43,7 @@ this.AdminController = RouteController.extend({
 			yourcoupons: Coupons.find({}, {}),
 			yourdetails: Userdetails.find({}, {}),
 			yourdeliveries: Deliveries.find({}, {}),
-			yourvendors: Vendors.find({}, {})
+			yourvendors: Vendors.find({}, {}),
 		};
 
 		return data;
